@@ -4,6 +4,8 @@ library(tidyverse)
 library(lubridate)
 library(anytime)
 library(magrittr)
+library(grid)
+library(gridExtra)
 library(scales)
 
 r_events <- read_csv('events_data.csv')
@@ -98,13 +100,23 @@ p <- ggplot(data = data_for_plot) +
                date_breaks = "3 months") +
   theme(legend.position = 'none') +
   labs(x = '', y = 'Weekly active R4DS members',
-       title = 'Weekly active R4DS members over time with major R events marked',
+       caption = 'Data by tidytuesday and Jumping Rivers 
+Visualisation: Anastasia Kuprina (@kuprinasha)',
        subtitle = 'Generally, activity in the community is not always tied to R events. rconf, however, increases activity massively! 
 After rconf there were over x2 times more active members for a few weeks.
 UseR conference in 2018 had some increase too, although something affected activity already a few days before.') +
   theme_classic()
 
-ggsave('plot.png', p,
+title = c('Weekly active R4DS members over time with major R events marked in','blue')
+colors = c('black', 'steelblue')
+
+gp <- grid.arrange(p, 
+             top = tableGrob(t(title), 
+                             theme=ttheme_minimal(padding=unit(c(3,2,3,0),'mm'),
+                                                  base_colour = colors,
+                                                  base_size = 20)))
+
+ggsave('plot.png', gp,
        width = 25,
        height = 15,
        units = 'cm')
