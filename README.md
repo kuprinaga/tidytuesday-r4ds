@@ -10,7 +10,7 @@ The outcome:
 It's not as pretty as I usually try to make charts, but it's at least informative :)
 
 Original data: 
-1: https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-16
+1: https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-16 <br/>
 2: https://jumpingrivers.github.io/meetingsR/the-data.html
 
 Libraries used: 
